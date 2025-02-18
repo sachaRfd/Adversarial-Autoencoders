@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "adversarial-aa-pytorch"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "sachaRfd"}
+]
+requires-python = ">=3.12"
+dependencies = [
+    "pre-commit",
+    "torch",
+    "torchvision",
+    "matplotlib",
+    "numpy",
+    "scipy"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+packages = {find = {where = ["src"]}}
+
+[tool.setuptools.package-data]
+"*" = ["*.txt", "*.rst"]
