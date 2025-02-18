@@ -3,7 +3,7 @@
 - MNIST generator using adversarial autoencoders.
 
 
-## Installation: 
+## Installation:
 
 Run following:
 
@@ -12,13 +12,13 @@ conda  create -n aaa python=3.12 -y
 conda activate aaa
 ```
 
-Then install the local code: 
+Then install the local code:
 
 ```bash
 pip install -e .
 ```
 
-## Dataset: 
+## Dataset:
 
 1. MNIST
 2. Timeseries

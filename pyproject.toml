@@ -16,7 +16,8 @@ dependencies = [
     "torchvision",
     "matplotlib",
     "numpy",
-    "scipy"
+    "scipy",
+    "tqdm"
 ]
 
 [tool.setuptools]
