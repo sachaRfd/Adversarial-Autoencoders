@@ -1,3 +1,13 @@
+"""
+
+Code for the models used.
+
+Encoder: Encodes the input images into a compact latent space, preserving image features.
+Decoder: Decodes the original image from the latent space.
+Discriminator: Predicts whether the latent space corresponds to a true image, or a samples from the prior distribution.
+
+"""
+
 import torch
 import torch.nn as nn
 import numpy as np
@@ -78,3 +88,29 @@ class MNISTdecoder(nn.Module):
         out = self.deconv_out(out)
         out = self.sigmoid(out)
         return out.view(-1, 784)
+
+
+class MNISTdiscriminator(nn.Module):
+    def __init__(self, args):
+        super(MNISTdiscriminator, self).__init__()
+
+        self.dim = args.dim
+        self.block = nn.Sequential(
+            nn.Linear(self.dim, self.dim * 2),
+            nn.Dropout(args.dropout),
+            nn.ReLU(),
+            nn.Linear(self.dim * 2, self.dim),
+            nn.Dropout(args.dropout),
+            nn.ReLU(),
+            nn.Linear(self.dim, 8),
+            nn.Dropout(args.dropout),
+            nn.ReLU(),
+            nn.Linear(8, 1),
+            nn.Dropout(args.dropout),
+            nn.ReLU(),
+        )
+        self.sigmoid = nn.Sigmoid()
+
+    def forward(self, input):
+        output = self.block(input)
+        return self.sigmoid(output)

@@ -41,5 +41,4 @@ def load_mnist(args):
         batch_size=args.batchsize,
         shuffle=False,
     )
-
     return train_loader, test_loader
